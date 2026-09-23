@@ -74,6 +74,7 @@ h1 span{color:var(--celeste)}
 .btn.watch::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--live-ink)}
 .btn.cal{border:1px solid var(--line);color:var(--ink)}
 .kind{font:600 11px/1 "Barlow",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--celeste)}
+.llave{font-size:13px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
 .empty{color:var(--muted);padding:14px}
 footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px;max-width:62ch}
 footer a{color:var(--celeste)}
@@ -108,6 +109,7 @@ footer a{color:var(--celeste)}
   <main id="days" style="display:flex;flex-direction:column;gap:28px"></main>
 
   <footer>
+    <span>Las páginas de llave corresponden al documento de llaves enviado por la organización.</span>
     <span>Fuente: cronograma de categorías de la organización y posteo oficial de la ITF con los links por ring. Todos los links fueron verificados.</span>
     <span>Si un link no carga, entrá al <a href="https://www.youtube.com/@ITFTaekwonDoFederation/streams" target="_blank" rel="noopener">canal de YouTube de la ITF</a>: ahí están todas las transmisiones, con el número de ring y la fecha en el título.</span>
   </footer>
@@ -123,26 +125,26 @@ const YT = {
 };
 // Horarios en hora de España (CEST, UTC+2)
 const E = [
- ["2026-09-29","10:50","11:57",7,["Carolina Pomi"],"Formas","Individual · Fem. 12–14 años · 4.º–3.º Gup"],
- ["2026-09-29","13:20","14:40",8,["Pedro Suarez Bravo"],"Lucha","Individual · Masc. 15–17 años · 1.º–3.º Dan · +60 a 65 kg"],
- ["2026-09-29","15:29","18:03",4,["Ignacio Galeano"],"Lucha","Individual · Masc. 15–17 años · 1.º–3.º Dan · +55 a 60 kg"],
- ["2026-09-30","09:00","09:44",4,["Pablo Arce"],"Formas","Individual · Masc. 46+ · 4.º–6.º Dan"],
- ["2026-09-30","09:48","10:14",5,["Ileana Yacusso"],"Formas","Individual · Fem. 36–45 años · 3.º Dan"],
- ["2026-09-30","10:49","12:09",7,["Camila Borda"],"Lucha","Individual · Fem. 18–35 años · 1.º–6.º Dan · +60 a 65 kg"],
- ["2026-09-30","11:54","12:55",10,["Ileana Yacusso"],"Lucha","Individual · Fem. 36–45 años · 1.º–6.º Dan · hasta 57 kg"],
- ["2026-09-30","14:54","15:49",7,["Uriel Peralta"],"Lucha","Individual · Masc. 15–17 años · 4.º–1.º Gup · +70 a 75 kg"],
- ["2026-09-30","16:28","17:53",10,["Pablo Arce"],"Lucha","Individual · Masc. 46+ · 1.º–6.º Dan · hasta 68 kg"],
- ["2026-10-01","09:00","10:48",2,["Pablo Arce"],"Rotura de potencia","Individual · Masc. 46+ · 1.º–6.º Dan"],
- ["2026-10-01","10:53","12:09",7,["Camila Borda"],"Formas","Individual · Fem. 18–35 años · 3.º Dan"],
- ["2026-10-01","13:20","15:05",3,["Pablo Arce"],"Técnicas especiales","Individual · Masc. 46+ · 1.º–6.º Dan"],
- ["2026-10-01","15:34","16:40",8,["Carolina Pomi"],"Lucha","Individual · Fem. 12–14 años · 4.º–1.º Gup · +48 a 52 kg"],
- ["2026-10-02","10:51","11:43",9,["Pedro Suarez Bravo"],"Formas","Individual · Masc. 15–17 años · 2.º Dan"],
- ["2026-10-02","10:53","11:37",9,["Ignacio Galeano"],"Formas","Individual · Masc. 15–17 años · 2.º Dan"],
- ["2026-10-02","10:53","11:37",10,["Uriel Peralta"],"Formas","Individual · Masc. 15–17 años · 2.º–1.º Gup"],
- ["2026-10-03","09:00","09:12",10,["Uriel Peralta"],"Formas","Por equipos · Masc. 15–17 años · 4.º–1.º Gup"],
- ["2026-10-03","09:00","10:13",4,["Ignacio Galeano","Pedro Suarez Bravo"],"Formas","Por equipos · Masc. 15–17 años · 1.º–3.º Dan"],
- ["2026-10-03","09:31","10:23",9,["Uriel Peralta"],"Lucha","Por equipos · Masc. 15–17 años · 4.º–1.º Gup"],
- ["2026-10-03","11:13","12:30",4,["Camila Borda"],"Lucha","Por equipos · Fem. 18–35 años · 1.º–6.º Dan"]
+ ["2026-09-29","10:50","11:57",7,["Carolina Pomi"],"Formas","Individual · Fem. 12–14 años · 4.º–3.º Gup","152–153"],
+ ["2026-09-29","13:20","14:40",8,["Pedro Suarez Bravo"],"Lucha","Individual · Masc. 15–17 años · 1.º–3.º Dan · +60 a 65 kg","44–47"],
+ ["2026-09-29","15:29","18:03",4,["Ignacio Galeano"],"Lucha","Individual · Masc. 15–17 años · 1.º–3.º Dan · +55 a 60 kg","44–47"],
+ ["2026-09-30","09:00","09:44",4,["Pablo Arce"],"Formas","Individual · Masc. 46+ · 4.º–6.º Dan","134"],
+ ["2026-09-30","09:48","10:14",5,["Ileana Yacusso"],"Formas","Individual · Fem. 36–45 años · 3.º Dan",""],
+ ["2026-09-30","10:49","12:09",7,["Camila Borda"],"Lucha","Individual · Fem. 18–35 años · 1.º–6.º Dan · +60 a 65 kg","205–206"],
+ ["2026-09-30","11:54","12:55",10,["Ileana Yacusso"],"Lucha","Individual · Fem. 36–45 años · 1.º–6.º Dan · hasta 57 kg",""],
+ ["2026-09-30","14:54","15:49",7,["Uriel Peralta"],"Lucha","Individual · Masc. 15–17 años · 4.º–1.º Gup · +70 a 75 kg","38"],
+ ["2026-09-30","16:28","17:53",10,["Pablo Arce"],"Lucha","Individual · Masc. 46+ · 1.º–6.º Dan · hasta 68 kg","126"],
+ ["2026-10-01","09:00","10:48",2,["Pablo Arce"],"Rotura de potencia","Individual · Masc. 46+ · 1.º–6.º Dan","PTS"],
+ ["2026-10-01","10:53","12:09",7,["Camila Borda"],"Formas","Individual · Fem. 18–35 años · 3.º Dan","221"],
+ ["2026-10-01","13:20","15:05",3,["Pablo Arce"],"Técnicas especiales","Individual · Masc. 46+ · 1.º–6.º Dan","PTS"],
+ ["2026-10-01","15:34","16:40",8,["Carolina Pomi"],"Lucha","Individual · Fem. 12–14 años · 4.º–1.º Gup · +48 a 52 kg","140"],
+ ["2026-10-02","10:51","11:43",9,["Pedro Suarez Bravo"],"Formas","Individual · Masc. 15–17 años · 2.º Dan","66–69"],
+ ["2026-10-02","10:53","11:37",9,["Ignacio Galeano"],"Formas","Individual · Masc. 15–17 años · 2.º Dan","66–69"],
+ ["2026-10-02","10:53","11:37",10,["Uriel Peralta"],"Formas","Individual · Masc. 15–17 años · 2.º–1.º Gup","54–57"],
+ ["2026-10-03","09:00","09:12",10,["Uriel Peralta"],"Formas","Por equipos · Masc. 15–17 años · 4.º–1.º Gup","274"],
+ ["2026-10-03","09:00","10:13",4,["Ignacio Galeano","Pedro Suarez Bravo"],"Formas","Por equipos · Masc. 15–17 años · 1.º–3.º Dan","280"],
+ ["2026-10-03","09:31","10:23",9,["Uriel Peralta"],"Lucha","Por equipos · Masc. 15–17 años · 4.º–1.º Gup","269"],
+ ["2026-10-03","11:13","12:30",4,["Camila Borda"],"Lucha","Por equipos · Fem. 18–35 años · 1.º–6.º Dan","294–297"]
 ];
 const DAYNAMES=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 const MONTHS=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
@@ -151,7 +153,7 @@ function toUTC(date,hm){const [y,m,d]=date.split("-").map(Number);const [h,mi]=h
 function arg(dt){const a=new Date(dt.getTime()-3*3600e3);return {h:pad(a.getUTCHours())+":"+pad(a.getUTCMinutes()),d:a.getUTCDate(),m:a.getUTCMonth(),wd:a.getUTCDay(),key:a.toISOString().slice(0,10)};}
 function gstamp(dt){return dt.toISOString().replace(/[-:]/g,"").slice(0,15)+"Z";}
 
-const events=E.map(([date,s,e,ring,names,kind,cat])=>{
+const events=E.map(([date,s,e,ring,names,kind,cat,page])=>{
   const us=toUTC(date,s), ue=toUTC(date,e), a=arg(us), b=arg(ue);
   const id=YT[date][ring]; const url="https://www.youtube.com/watch?v="+id;
   const cal="https://calendar.google.com/calendar/render?action=TEMPLATE"+
@@ -159,7 +161,7 @@ const events=E.map(([date,s,e,ring,names,kind,cat])=>{
     "&dates="+gstamp(us)+"/"+gstamp(ue)+
     "&ctz=America/Argentina/Buenos_Aires"+
     "&details="+encodeURIComponent("Copa del Mundo ITF Benidorm 2026\n"+cat+"\nHorario estimado. Transmisión: "+url);
-  return {date,s,e,ring,names,kind,cat,url,cal,a,b};
+  return {date,s,e,ring,names,kind,cat,page,url,cal,a,b};
 }).sort((x,y)=>x.a.key.localeCompare(y.a.key)||x.a.h.localeCompare(y.a.h)||x.ring-y.ring);
 
 const people=[...new Set(events.flatMap(e=>e.names))].sort((a,b)=>a.localeCompare(b,"es"));
@@ -186,7 +188,7 @@ function render(){
     byDay[k].forEach(e=>{
       const r=document.createElement("article");r.className="row";
       r.innerHTML=`<div class="time"><span class="ar">${e.a.h}</span><span class="ar-end">a ${e.b.h}</span><span class="es">España ${e.s}</span></div>
-      <div class="info"><span class="kind">${e.kind}</span><span class="who">${e.names.join(" y ")}</span><span class="cat">${e.cat}</span>
+      <div class="info"><span class="kind">${e.kind}</span><span class="who">${e.names.join(" y ")}</span><span class="cat">${e.cat}</span>${e.page==="PTS"?`<span class="llave">Se define por puntaje, sin llave</span>`:e.page?`<span class="llave">Llave: pág. ${e.page}</span>`:""}
       <div class="meta"><span class="ring">RING ${e.ring}</span><a class="btn watch" href="${e.url}" target="_blank" rel="noopener">Ver en vivo</a><a class="btn cal" href="${e.cal}" target="_blank" rel="noopener">+ Google Calendar</a></div></div>`;
       ul.appendChild(r);
     });

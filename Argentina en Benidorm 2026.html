@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Argentina en Benidorm 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#EEF2F6; --surface:#FFFFFF; --ink:#13203A; --muted:#5A6578; --line:#D6DDE7;
+  --celeste:#2F7FC1; --celeste-soft:#DCEBF7; --sun:#E0A21B; --live:#C8102E; --live-ink:#FFFFFF;
+  --chip:#FFFFFF; --chip-on:#13203A; --chip-on-ink:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1524; --surface:#162034; --ink:#E8EEF7; --muted:#9AA7BC; --line:#26334C;
+    --celeste:#74B3E8; --celeste-soft:#1C3350; --sun:#F2C14E; --live:#E0323F; --live-ink:#FFFFFF;
+    --chip:#162034; --chip-on:#74B3E8; --chip-on-ink:#0E1524;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1524; --surface:#162034; --ink:#E8EEF7; --muted:#9AA7BC; --line:#26334C;
+  --celeste:#74B3E8; --celeste-soft:#1C3350; --sun:#F2C14E; --live:#E0323F; --live-ink:#FFFFFF;
+  --chip:#162034; --chip-on:#74B3E8; --chip-on-ink:#0E1524;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 "Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font:600 12px/1 "Barlow",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--celeste)}
+h1{font:700 clamp(34px,8vw,52px)/.95 "Barlow Condensed","Arial Narrow",sans-serif;margin:0;text-wrap:balance;letter-spacing:.005em}
+h1 span{color:var(--celeste)}
+.lede{margin:0;color:var(--muted);max-width:60ch}
+.tz{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px}
+.tz b{font-weight:600}
+.tz .flag{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.warn{border-left:3px solid var(--sun);padding:2px 0 2px 12px;color:var(--ink);font-size:14px;max-width:62ch}
+.photos{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:var(--celeste-soft);color:var(--ink);text-decoration:none}
+.photos:focus-visible{outline:2px solid var(--celeste);outline-offset:2px}
+.ph-icon{flex:none;width:34px;height:34px;border-radius:8px;background:var(--celeste);position:relative}
+.ph-icon::before{content:"";position:absolute;inset:9px 7px 8px;border:2px solid var(--surface);border-radius:3px}
+.ph-icon::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:var(--surface);top:13px;left:14px}
+.ph-text{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.ph-text b{font-weight:600;font-size:16px}
+.ph-text small{font-size:13px;color:var(--muted)}
+.ph-arrow{font-size:20px;color:var(--celeste)}
+.filters{display:flex;flex-direction:column;gap:8px}
+.filters label{font:600 12px/1 "Barlow",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 14px/1 "Barlow",sans-serif;padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--chip-on);color:var(--chip-on-ink);border-color:var(--chip-on)}
+.chip:focus-visible,.btn:focus-visible{outline:2px solid var(--celeste);outline-offset:2px}
+.day{display:flex;flex-direction:column;gap:10px}
+.day h2{font:700 26px/1 "Barlow Condensed","Arial Narrow",sans-serif;margin:0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.day h2 small{font:500 13px/1 "Barlow",sans-serif;color:var(--muted);letter-spacing:.02em}
+.list{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.row{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:14px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.time{display:flex;flex-direction:column;gap:3px;font-variant-numeric:tabular-nums}
+.time .ar{font:700 26px/1 "Barlow Condensed","Arial Narrow",sans-serif}
+.time .ar-end{font-size:13px;color:var(--muted)}
+.time .es{font-size:12px;white-space:nowrap;color:var(--muted);margin-top:4px}
+.info{display:flex;flex-direction:column;gap:6px;min-width:0}
+.who{font:600 17px/1.2 "Barlow",sans-serif}
+.cat{font-size:14px;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:4px}
+.ring{font:700 15px/1 "Barlow Condensed","Arial Narrow",sans-serif;letter-spacing:.04em;background:var(--celeste-soft);color:var(--ink);padding:6px 9px;border-radius:6px}
+.btn{font:600 13px/1 "Barlow",sans-serif;text-decoration:none;padding:8px 11px;border-radius:6px;display:inline-flex;gap:6px;align-items:center}
+.btn.watch{background:var(--live);color:var(--live-ink)}
+.btn.watch::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--live-ink)}
+.btn.cal{border:1px solid var(--line);color:var(--ink)}
+.kind{font:600 11px/1 "Barlow",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--celeste)}
+.empty{color:var(--muted);padding:14px}
+footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px;max-width:62ch}
+footer a{color:var(--celeste)}
+@media (max-width:420px){.row{grid-template-columns:78px 1fr;gap:12px}.time .ar{font-size:23px}}
+</style>
+<style>body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Copa del Mundo ITF · Benidorm 2026</div>
+    <h1>Cuándo compite cada uno <span>(hora Argentina)</span></h1>
+    <p class="lede">Ring, horario y link a la transmisión en vivo de YouTube de cada competidor. Tocá un nombre para ver solo sus combates.</p>
+    <div class="tz">
+      <span><span class="flag" style="background:var(--celeste)"></span><b>Argentina</b> = España − 5 h</span>
+      <span>09:00 en Benidorm → <b>04:00</b> en Argentina</span>
+    </div>
+    <a class="photos" href="https://drive.google.com/drive/folders/1f6AD1PvSCulfPLHos89xppg0oFq1k53Z?usp=sharing" target="_blank" rel="noopener">
+      <span class="ph-icon" aria-hidden="true"></span>
+      <span class="ph-text"><b>Fotos del torneo</b><small>Carpeta de Google Drive · se va actualizando durante el viaje</small></span>
+      <span class="ph-arrow" aria-hidden="true">→</span>
+    </a>
+    <p class="warn"><b>Los horarios son estimados</b> de la organización: marcan la ventana en la que se juega la categoría, no el minuto exacto de cada combate. Conviene conectarse al inicio de la ventana y dejar el ring abierto.</p>
+  </header>
+
+  <div class="filters">
+    <label id="flabel">Competidor</label>
+    <div class="chips" id="chips" role="group" aria-labelledby="flabel"></div>
+  </div>
+
+  <main id="days" style="display:flex;flex-direction:column;gap:28px"></main>
+
+  <footer>
+    <span>Fuente: cronograma de categorías de la organización y posteo oficial de la ITF con los links por ring. Todos los links fueron verificados.</span>
+    <span>Si un link no carga, las transmisiones también están en el canal de YouTube de la ITF, pestaña “En vivo”, con el título “Ring N” y la fecha.</span>
+  </footer>
+</div>
+
+<script>
+const YT = {
+  "2026-09-29":{4:"dWJR4G5PYgI",7:"9DdojyEDUIM",8:"sXODaYLN5Zc"},
+  "2026-09-30":{4:"ZlxCI_1Vm80",5:"ITzATIeSlHk",7:"xf_IVKBUHUU",10:"yiGVYEctkjo"},
+  "2026-10-01":{2:"9mBZkUErKXU",3:"XHcrfRStKYI",7:"2GVLhO1qgj4",8:"aY60MKMPsko"},
+  "2026-10-02":{9:"3xvjE0Hlelo",10:"53XbhC5ofoM"},
+  "2026-10-03":{4:"5HURqE0hKVg",9:"4KN5uOc3Uqo",10:"J2XREwuUSsQ"}
+};
+// Horarios en hora de España (CEST, UTC+2)
+const E = [
+ ["2026-09-29","10:50","11:57",7,["Carolina Pomi"],"Formas","Individual · Fem. 12–14 años · 4.º–3.º Gup"],
+ ["2026-09-29","13:20","14:40",8,["Pedro Suarez Bravo"],"Lucha","Individual · Masc. 15–17 años · 1.º–3.º Dan · +60 a 65 kg"],
+ ["2026-09-29","15:29","18:03",4,["Ignacio Galeano"],"Lucha","Individual · Masc. 15–17 años · 1.º–3.º Dan · +55 a 60 kg"],
+ ["2026-09-30","09:00","09:44",4,["Pablo Arce"],"Formas","Individual · Masc. 46+ · 4.º–6.º Dan"],
+ ["2026-09-30","09:48","10:14",5,["Ileana Yacusso"],"Formas","Individual · Fem. 36–45 años · 3.º Dan"],
+ ["2026-09-30","10:49","12:09",7,["Camila Borda"],"Lucha","Individual · Fem. 18–35 años · 1.º–6.º Dan · +60 a 65 kg"],
+ ["2026-09-30","11:54","12:55",10,["Ileana Yacusso"],"Lucha","Individual · Fem. 36–45 años · 1.º–6.º Dan · hasta 57 kg"],
+ ["2026-09-30","14:54","15:49",7,["Uriel Peralta"],"Lucha","Individual · Masc. 15–17 años · 4.º–1.º Gup · +70 a 75 kg"],
+ ["2026-09-30","16:28","17:53",10,["Pablo Arce"],"Lucha","Individual · Masc. 46+ · 1.º–6.º Dan · hasta 68 kg"],
+ ["2026-10-01","09:00","10:48",2,["Pablo Arce"],"Rotura de potencia","Individual · Masc. 46+ · 1.º–6.º Dan"],
+ ["2026-10-01","10:53","12:09",7,["Camila Borda"],"Formas","Individual · Fem. 18–35 años · 3.º Dan"],
+ ["2026-10-01","13:20","15:05",3,["Pablo Arce"],"Técnicas especiales","Individual · Masc. 46+ · 1.º–6.º Dan"],
+ ["2026-10-01","15:34","16:40",8,["Carolina Pomi"],"Lucha","Individual · Fem. 12–14 años · 4.º–1.º Gup · +48 a 52 kg"],
+ ["2026-10-02","10:51","11:43",9,["Pedro Suarez Bravo"],"Formas","Individual · Masc. 15–17 años · 2.º Dan"],
+ ["2026-10-02","10:53","11:37",9,["Ignacio Galeano"],"Formas","Individual · Masc. 15–17 años · 2.º Dan"],
+ ["2026-10-02","10:53","11:37",10,["Uriel Peralta"],"Formas","Individual · Masc. 15–17 años · 2.º–1.º Gup"],
+ ["2026-10-03","09:00","09:12",10,["Uriel Peralta"],"Formas","Por equipos · Masc. 15–17 años · 4.º–1.º Gup"],
+ ["2026-10-03","09:00","10:13",4,["Ignacio Galeano","Pedro Suarez Bravo"],"Formas","Por equipos · Masc. 15–17 años · 1.º–3.º Dan"],
+ ["2026-10-03","09:31","10:23",9,["Uriel Peralta"],"Lucha","Por equipos · Masc. 15–17 años · 4.º–1.º Gup"],
+ ["2026-10-03","11:13","12:30",4,["Camila Borda"],"Lucha","Por equipos · Fem. 18–35 años · 1.º–6.º Dan"]
+];
+const DAYNAMES=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const MONTHS=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const pad=n=>String(n).padStart(2,"0");
+function toUTC(date,hm){const [y,m,d]=date.split("-").map(Number);const [h,mi]=hm.split(":").map(Number);return new Date(Date.UTC(y,m-1,d,h-2,mi));}
+function arg(dt){const a=new Date(dt.getTime()-3*3600e3);return {h:pad(a.getUTCHours())+":"+pad(a.getUTCMinutes()),d:a.getUTCDate(),m:a.getUTCMonth(),wd:a.getUTCDay(),key:a.toISOString().slice(0,10)};}
+function gstamp(dt){return dt.toISOString().replace(/[-:]/g,"").slice(0,15)+"Z";}
+
+const events=E.map(([date,s,e,ring,names,kind,cat])=>{
+  const us=toUTC(date,s), ue=toUTC(date,e), a=arg(us), b=arg(ue);
+  const id=YT[date][ring]; const url="https://www.youtube.com/watch?v="+id;
+  const cal="https://calendar.google.com/calendar/render?action=TEMPLATE"+
+    "&text="+encodeURIComponent(names.join(" y ")+" · "+kind+" · Ring "+ring)+
+    "&dates="+gstamp(us)+"/"+gstamp(ue)+
+    "&ctz=America/Argentina/Buenos_Aires"+
+    "&details="+encodeURIComponent("Copa del Mundo ITF Benidorm 2026\n"+cat+"\nHorario estimado. Transmisión: "+url);
+  return {date,s,e,ring,names,kind,cat,url,cal,a,b};
+}).sort((x,y)=>x.a.key.localeCompare(y.a.key)||x.a.h.localeCompare(y.a.h)||x.ring-y.ring);
+
+const people=[...new Set(events.flatMap(e=>e.names))].sort((a,b)=>a.localeCompare(b,"es"));
+let current="Todos";
+try{const saved=localStorage.getItem("benidorm-filter");if(saved&&(saved==="Todos"||people.includes(saved)))current=saved;}catch(e){}
+
+const chips=document.getElementById("chips");
+["Todos",...people].forEach(p=>{
+  const b=document.createElement("button");b.className="chip";b.type="button";b.id="chip-"+p.replace(/\W+/g,"-");
+  b.textContent=p;b.onclick=()=>{current=p;try{localStorage.setItem("benidorm-filter",p)}catch(e){}render();};
+  chips.appendChild(b);
+});
+
+function render(){
+  [...chips.children].forEach(c=>c.setAttribute("aria-pressed",String(c.textContent===current)));
+  const list=events.filter(e=>current==="Todos"||e.names.includes(current));
+  const byDay={};list.forEach(e=>(byDay[e.a.key]??=[]).push(e));
+  const root=document.getElementById("days");root.innerHTML="";
+  Object.keys(byDay).sort().forEach(k=>{
+    const f=byDay[k][0].a;
+    const sec=document.createElement("section");sec.className="day";
+    sec.innerHTML=`<h2>${DAYNAMES[f.wd]} ${f.d} de ${MONTHS[f.m]} <small>${byDay[k].length} ${byDay[k].length===1?"categoría":"categorías"}</small></h2>`;
+    const ul=document.createElement("div");ul.className="list";
+    byDay[k].forEach(e=>{
+      const r=document.createElement("article");r.className="row";
+      r.innerHTML=`<div class="time"><span class="ar">${e.a.h}</span><span class="ar-end">a ${e.b.h}</span><span class="es">España ${e.s}</span></div>
+      <div class="info"><span class="kind">${e.kind}</span><span class="who">${e.names.join(" y ")}</span><span class="cat">${e.cat}</span>
+      <div class="meta"><span class="ring">RING ${e.ring}</span><a class="btn watch" href="${e.url}" target="_blank" rel="noopener">Ver en vivo</a><a class="btn cal" href="${e.cal}" target="_blank" rel="noopener">+ Google Calendar</a></div></div>`;
+      ul.appendChild(r);
+    });
+    sec.appendChild(ul);root.appendChild(sec);
+  });
+}
+render();
+</script>
+</body>
+</html>

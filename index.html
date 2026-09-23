@@ -39,6 +39,15 @@ h1 span{color:var(--celeste)}
 .tz b{font-weight:600}
 .tz .flag{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:1px}
 .warn{border-left:3px solid var(--sun);padding:2px 0 2px 12px;color:var(--ink);font-size:14px;max-width:62ch}
+.photos{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:var(--celeste-soft);color:var(--ink);text-decoration:none}
+.photos:focus-visible{outline:2px solid var(--celeste);outline-offset:2px}
+.ph-icon{flex:none;width:34px;height:34px;border-radius:8px;background:var(--celeste);position:relative}
+.ph-icon::before{content:"";position:absolute;inset:9px 7px 8px;border:2px solid var(--surface);border-radius:3px}
+.ph-icon::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:var(--surface);top:13px;left:14px}
+.ph-text{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.ph-text b{font-weight:600;font-size:16px}
+.ph-text small{font-size:13px;color:var(--muted)}
+.ph-arrow{font-size:20px;color:var(--celeste)}
 .filters{display:flex;flex-direction:column;gap:8px}
 .filters label{font:600 12px/1 "Barlow",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
@@ -83,6 +92,11 @@ footer a{color:var(--celeste)}
       <span><span class="flag" style="background:var(--celeste)"></span><b>Argentina</b> = España − 5 h</span>
       <span>09:00 en Benidorm → <b>04:00</b> en Argentina</span>
     </div>
+    <a class="photos" href="https://drive.google.com/drive/folders/1f6AD1PvSCulfPLHos89xppg0oFq1k53Z?usp=sharing" target="_blank" rel="noopener">
+      <span class="ph-icon" aria-hidden="true"></span>
+      <span class="ph-text"><b>Fotos del torneo</b><small>Carpeta de Google Drive · se va actualizando durante el viaje</small></span>
+      <span class="ph-arrow" aria-hidden="true">→</span>
+    </a>
     <p class="warn"><b>Los horarios son estimados</b> de la organización: marcan la ventana en la que se juega la categoría, no el minuto exacto de cada combate. Conviene conectarse al inicio de la ventana y dejar el ring abierto.</p>
   </header>
 

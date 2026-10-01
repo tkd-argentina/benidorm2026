@@ -75,6 +75,9 @@ h1 span{color:var(--celeste)}
 .btn.cal{border:1px solid var(--line);color:var(--ink)}
 .kind{font:600 11px/1 "Barlow",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--celeste)}
 .llave{font-size:13px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.final{font-size:13px;color:var(--muted)}
+.final b{color:var(--ink);font-variant-numeric:tabular-nums}
+.final a{color:var(--celeste);font-weight:600}
 .empty{color:var(--muted);padding:14px}
 footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px;max-width:62ch}
 footer a{color:var(--celeste)}
@@ -120,8 +123,8 @@ const YT = {
   "2026-09-29":{4:"dWJR4G5PYgI",7:"9DdojyEDUIM",8:"sXODaYLN5Zc"},
   "2026-09-30":{4:"ZlxCI_1Vm80",5:"ITzATIeSlHk",7:"xf_IVKBUHUU",10:"yiGVYEctkjo"},
   "2026-10-01":{2:"9mBZkUErKXU",3:"XHcrfRStKYI",7:"2GVLhO1qgj4",8:"aY60MKMPsko"},
-  "2026-10-02":{9:"3xvjE0Hlelo",10:"53XbhC5ofoM"},
-  "2026-10-03":{4:"5HURqE0hKVg",9:"4KN5uOc3Uqo",10:"J2XREwuUSsQ"}
+  "2026-10-02":{1:"oGwKaEtBVi8",7:"_6dTC1ZAQCA",9:"3xvjE0Hlelo",10:"53XbhC5ofoM"},
+  "2026-10-03":{1:"ek_F108kxEs",4:"5HURqE0hKVg",8:"CkLo8QuPow0",9:"4KN5uOc3Uqo",10:"J2XREwuUSsQ"}
 };
 // Horarios en hora de España (CEST, UTC+2)
 const E = [
@@ -138,9 +141,9 @@ const E = [
  ["2026-10-01","10:53","12:09",7,["Camila Borda"],"Formas","Individual · Fem. 18–35 años · 3.º Dan","221"],
  ["2026-10-01","13:20","15:05",3,["Pablo Arce"],"Técnicas especiales","Individual · Masc. 46+ · 1.º–6.º Dan","PTS"],
  ["2026-10-01","15:34","16:40",8,["Carolina Pomi"],"Lucha","Individual · Fem. 12–14 años · 4.º–1.º Gup · +48 a 52 kg","140"],
- ["2026-10-02","10:51","11:43",9,["Pedro Suarez Bravo"],"Formas","Individual · Masc. 15–17 años · 2.º Dan","66–69"],
+ ["2026-10-02","10:53","11:37",10,["Pedro Suarez Bravo"],"Formas","Individual · Masc. 15–17 años · 2.º Dan","66–69"],
  ["2026-10-02","10:53","11:37",9,["Ignacio Galeano"],"Formas","Individual · Masc. 15–17 años · 2.º Dan","66–69"],
- ["2026-10-02","10:53","11:37",10,["Uriel Peralta"],"Formas","Individual · Masc. 15–17 años · 2.º–1.º Gup","54–57"],
+ ["2026-10-02","11:22","",7,["Uriel Peralta"],"Formas","Individual · Masc. 15–17 años · 2.º–1.º Gup","54–57"],
  ["2026-10-03","09:00","09:12",10,["Uriel Peralta"],"Formas","Por equipos · Masc. 15–17 años · 4.º–1.º Gup","274"],
  ["2026-10-03","09:00","10:13",4,["Ignacio Galeano","Pedro Suarez Bravo"],"Formas","Por equipos · Masc. 15–17 años · 1.º–3.º Dan","280"],
  ["2026-10-03","09:31","10:23",9,["Uriel Peralta"],"Lucha","Por equipos · Masc. 15–17 años · 4.º–1.º Gup","269"],
@@ -154,7 +157,7 @@ function arg(dt){const a=new Date(dt.getTime()-3*3600e3);return {h:pad(a.getUTCH
 function gstamp(dt){return dt.toISOString().replace(/[-:]/g,"").slice(0,15)+"Z";}
 
 const events=E.map(([date,s,e,ring,names,kind,cat,page])=>{
-  const us=toUTC(date,s), ue=toUTC(date,e), a=arg(us), b=arg(ue);
+  const us=toUTC(date,s), ue=e?toUTC(date,e):new Date(us.getTime()+3600e3), a=arg(us), b=e?arg(ue):null;
   const id=YT[date][ring]; const url="https://www.youtube.com/watch?v="+id;
   const cal="https://calendar.google.com/calendar/render?action=TEMPLATE"+
     "&text="+encodeURIComponent(names.join(" y ")+" · "+kind+" · Ring "+ring)+
@@ -187,7 +190,7 @@ function render(){
     const ul=document.createElement("div");ul.className="list";
     byDay[k].forEach(e=>{
       const r=document.createElement("article");r.className="row";
-      r.innerHTML=`<div class="time"><span class="ar">${e.a.h}</span><span class="ar-end">a ${e.b.h}</span><span class="es">España ${e.s}</span></div>
+      r.innerHTML=`<div class="time"><span class="ar">${e.a.h}</span>${e.b?`<span class="ar-end">a ${e.b.h}</span>`:""}<span class="es">España ${e.s}</span></div>
       <div class="info"><span class="kind">${e.kind}</span><span class="who">${e.names.join(" y ")}</span><span class="cat">${e.cat}</span>${e.page==="PTS"?`<span class="llave">Se define por puntaje, sin llave</span>`:e.page?`<span class="llave">Llave: pág. ${e.page}</span>`:""}
       <div class="meta"><span class="ring">RING ${e.ring}</span><a class="btn watch" href="${e.url}" target="_blank" rel="noopener">Ver en vivo</a><a class="btn cal" href="${e.cal}" target="_blank" rel="noopener">+ Google Calendar</a></div></div>`;
       ul.appendChild(r);
